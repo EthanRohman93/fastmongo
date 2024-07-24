@@ -1,10 +1,29 @@
 .
 ├── docker-compose.yml
 ├── fast
+│   ├── database.py
+│   ├── Dockerfile
+│   ├── __init__.py
 │   ├── main.py
-│   └── requirements.txt
+│   ├── __pycache__
+│   │   └── main.cpython-312.pyc
+│   ├── requirements.txt
+│   └── routers
+│       ├── __init__.py
+│       ├── price.py
+│       ├── __pycache__
+│       │   ├── __init__.cpython-312.pyc
+│       │   ├── price.cpython-312.pyc
+│       │   ├── rsi.cpython-312.pyc
+│       │   ├── sma.cpython-312.pyc
+│       │   └── vol.cpython-312.pyc
+│       ├── rsi.py
+│       ├── sma.py
+│       └── vol.py
+├── migration
 ├── mongo
 ├── README.md
-└── structure.txt
+├── structure.txt
+└── validation
 
-3 directories, 5 files
+8 directories, 19 files
