@@ -1,0 +1,10 @@
+.
+├── docker-compose.yml
+├── fast
+│   ├── main.py
+│   └── requirements.txt
+├── mongo
+├── README.md
+└── structure.txt
+
+3 directories, 5 files
