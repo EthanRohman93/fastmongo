@@ -6,7 +6,7 @@ from database import get_db
 
 class RSIData(BaseModel):
     timestamp: str
-    rsi: int
+    rsi: float
 
 class BatchStockData(BaseModel):
     ticker: str
