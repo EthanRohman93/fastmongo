@@ -25,7 +25,7 @@ prices = [1,2,3,4]
 async def read_price():
     return prices
 
-@router.post(
+# @router.post(
 
-)
-async def add_records
+# )
+# async def add_records

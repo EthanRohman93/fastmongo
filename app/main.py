@@ -13,14 +13,6 @@ app.include_router(vol.router)
 async def root():
    return {"message": "Root Endpoint"}
 
-@app.on_event("startup")
-async def startup_db_client():
-    connect_to_mongo()
-
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    close_mongo_connection()
-
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
