@@ -1,17 +1,31 @@
-   version: '3.8'
+version: '3.8'
 
-   services:
-     mongo:
-       image: mongo
-       container_name: mongo
-       ports:
-         - "27017:27017"
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
 
-     fastapi:
-       build: ./fast
-       container_name: fastapi
-       ports:
-         - "8000:8000"
-       depends_on:
-         - mongo
+  fastapi:
+    build: ./app
+    container_name: fastapi
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
 
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile.migrate
+    container_name: migrate
+    depends_on:
+      - mongo
+      - fastapi
+
+volumes:
+  mongo_data:
+   
