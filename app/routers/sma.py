@@ -18,11 +18,15 @@ router = APIRouter(
     responses={404: {"description": "Not Found"}},
 )
 
-prices = [1,2,3,4]
-
 @router.get("/{ticker}")
-async def read_price():
-    return prices
+async def read_sma(ticker: str, db=Depends(get_db)):
+    collection = db[ticker]
+    if collection is None:
+        raise HTTPException(status_code=404, detail="Ticker not found")
+    document = collection.find_one({"sma": {"$exists": True}})
+    if document is None:
+        raise HTTPException(status_code=404, detail="Simple Moving Average data not found")
+    return document["sma"]
 
 @router.post("/{ticker}")
 async def add_records(ticker: str, batch_data: BatchStockData, db=Depends(get_db)):
